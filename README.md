@@ -4,11 +4,14 @@
 
 <br>
 
+> [!NOTE]
+> The game binaries are stored in an encrypted file system and have to be dumped to use IW4x64-Mod. This can be done using [UWPDumper](https://github.com/Wunkolo/UWPDumper).
+
 ## Compile from source
 
 - Clone the Git repo. Do NOT download it as ZIP, that won't work.
 - Update the submodules and run `premake5 vs2022` or simply use the delivered `generate.bat`.
-- Build via solution file in `build\iw7-mod.sln`.
+- Build via solution file in `build\iw4x64-mod.sln`.
 
 ### Premake arguments
 

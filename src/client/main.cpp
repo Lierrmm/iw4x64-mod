@@ -106,6 +106,11 @@ FARPROC load_binary(uint64_t* base_address)
 	std::string data;
 	if (!utils::io::read_file(binary, &data))
 	{
+		if (errno == EACCES) {
+			throw std::runtime_error(utils::string::va(
+				"Failed to access game binary (%s)!\nMake sure to dump the executables before running iw4x64-mod. You can use UWPDumper for this.",
+				binary.data()));
+		}
 		throw std::runtime_error(utils::string::va(
 			"Failed to read game binary (%s)!\nPlease copy the iw4x64-mod.exe into your Call of Duty: Modern Warfare 2 UWP installation folder and run it from there.",
 			binary.data()));
