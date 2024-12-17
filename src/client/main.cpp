@@ -56,22 +56,6 @@ void get_aslr_patched_binary(std::string* binary, std::string* data)
 	*binary = patched_binary;
 }
 
-BOOL WINAPI system_parameters_info_a(const UINT uiAction, const UINT uiParam, const PVOID pvParam, const UINT fWinIni)
-{
-	component_loader::post_unpack();
-	return SystemParametersInfoA(uiAction, uiParam, pvParam, fWinIni);
-}
-
-FARPROC WINAPI get_proc_address(const HMODULE hModule, const LPCSTR lpProcName)
-{
-	if (lpProcName == "GlobalMemoryStatusEx"s)
-	{
-		component_loader::post_unpack();
-	}
-
-	return GetProcAddress(hModule, lpProcName);
-}
-
 FARPROC load_binary(uint64_t* base_address)
 {
 	loader loader;
@@ -82,14 +66,6 @@ FARPROC load_binary(uint64_t* base_address)
 		if (function == "ExitProcess")
 		{
 			return exit_hook;
-		}
-		else if (function == "SystemParametersInfoA")
-		{
-			return system_parameters_info_a;
-		}
-		else if (function == "GetProcAddress")
-		{
-			return get_proc_address;
 		}
 
 		return component_loader::load_import(library, function);

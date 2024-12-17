@@ -31,18 +31,6 @@ bool component_loader::post_start()
 	return true;
 }
 
-void component_loader::post_unpack()
-{
-	static auto handled = false;
-	if (handled) return;
-	handled = true;
-
-	for (const auto& component_ : get_components())
-	{
-		component_->post_unpack();
-	}
-}
-
 bool component_loader::post_load()
 {
 	static auto handled = false;
