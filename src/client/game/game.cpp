@@ -7,6 +7,11 @@
 
 namespace game
 {
+	int Cmd_Argc()
+	{
+		return cmd_args->argc[cmd_args->nesting];
+	}
+	
 	uint64_t base_address;
 
 	namespace environment

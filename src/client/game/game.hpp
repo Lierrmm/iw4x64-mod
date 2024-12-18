@@ -53,7 +53,8 @@ namespace game
 		bool is_dedi();
 		void set_mode(mode mode);
 	}
-
+	
+	int Cmd_Argc();
 }
 
 size_t reverse_b(const size_t ptr);
