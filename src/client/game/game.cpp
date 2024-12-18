@@ -11,6 +11,38 @@ namespace game
 	{
 		return cmd_args->argc[cmd_args->nesting];
 	}
+
+	void DB_EnumXAssetEntries(XAssetType type, std::function<void(XAssetEntry*)> callback, bool overrides)
+	{
+		auto hash = &game::db_hashTable[0];
+		for (auto c = 0; c < 37000; c++)
+		{
+			for (auto i = *hash; i; )
+			{
+				const auto entry = &game::EntryPool[i];
+
+				if (entry->asset.type == type)
+				{
+					callback(entry);
+
+					if (overrides && entry->nextOverride)
+					{
+						auto next_ovveride = entry->nextOverride;
+						while (next_ovveride)
+						{
+							const auto override = &game::EntryPool[next_ovveride];
+							callback(override);
+							next_ovveride = override->nextOverride;
+						}
+					}
+				}
+
+				i = entry->nextHash;
+			}
+
+			++hash;
+		}
+	}
 	
 	uint64_t base_address;
 
