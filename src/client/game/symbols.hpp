@@ -1,7 +1,6 @@
 #pragma once
 
 #define WEAK __declspec(selectany)
-#include "component/command.hpp"
 
 namespace game
 {
