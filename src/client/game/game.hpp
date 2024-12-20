@@ -55,6 +55,7 @@ namespace game
 	}
 	
 	int Cmd_Argc();
+	void DB_EnumXAssetEntries(XAssetType type, std::function<void(XAssetEntry*)> callback, bool overrides);
 }
 
 size_t reverse_b(const size_t ptr);

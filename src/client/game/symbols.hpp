@@ -60,4 +60,7 @@ namespace game
 	WEAK symbol<cmd_function_s*> cmd_functions { 0x141C17968 };
 	WEAK symbol<CmdArgs> cmd_args{0x141C17810};
 	WEAK symbol<CmdArgs> sv_cmd_args{0x141C178C0};
+
+	WEAK symbol<XAssetEntry> EntryPool { 0x141567FD0 };
+	WEAK symbol<unsigned short> db_hashTable { 0x141551E90 };
 }
