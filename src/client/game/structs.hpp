@@ -384,12 +384,27 @@ namespace game
 	{
 		const char *name;
 	};
+
+	struct StringTableCell
+	{
+		const char* string;
+		int hash;
+	};
+	
+	struct StringTable
+	{
+		const char* name;
+		int columnCount;
+		int rowCount;
+		StringTableCell* values;
+	};
 	
 	union XAssetHeader
 	{
 		void* data;
 		Material* material;
 		Font_s* font;
+		StringTable* stringTable;
 	};
 	
 	struct XAsset
@@ -397,7 +412,7 @@ namespace game
 		XAssetType type;
 		XAssetHeader header;
 	};
-
+	
 	struct XAssetEntry
 	{
 		XAsset asset;

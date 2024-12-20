@@ -43,6 +43,16 @@ namespace game
 			++hash;
 		}
 	}
+
+	const char* TableLookup(StringTable* stringtable, int row, int column)
+	{
+		if (!stringtable || !stringtable->values || row >= stringtable->rowCount || column >= stringtable->columnCount) return "";
+
+		const char* value = stringtable->values[row * stringtable->columnCount + column].string;
+		if (!value) value = "";
+
+		return value;
+	}
 	
 	uint64_t base_address;
 

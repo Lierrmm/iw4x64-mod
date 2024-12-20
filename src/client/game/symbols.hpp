@@ -1,6 +1,7 @@
 #pragma once
 
 #define WEAK __declspec(selectany)
+#include "component/command.hpp"
 
 namespace game
 {
@@ -16,8 +17,16 @@ namespace game
 	WEAK symbol<dvar_t*(const char* name, float value, float min, float max, unsigned int flags, const char* desc)> Dvar_RegisterFloat { 0x1402880C0 };
 	WEAK symbol<dvar_t*(const char* name, int value, int min, int max, unsigned int flags, const char* desc)> Dvar_RegisterInt { 0x1402881F0 };
 	WEAK symbol<dvar_t*(const char* name, const char* value, unsigned int flags, const char* desc)> Dvar_RegisterString { 0x140288590 };
+	WEAK symbol<dvar_t*(const char* name, const char** valueList, int defaultIndex, unsigned int flags, const char* desc)> Dvar_RegisterEnum { 0x140287FC0 };
 	WEAK symbol<dvar_t*(const char* name)> Dvar_FindVar { 0x140287170 };
 
+	WEAK symbol<bool()> CL_IsCgameInitialized { 0x1400F1620 };
+	WEAK symbol<void(int, const char*, int)> LiveStorage_PlayerDataSetIntByName { 0x1401FE290 };
+	WEAK symbol<void(const char *const *navStrings, int navStringCount, const char *value, void *buffer, char *modifiedFlags)> LiveStorage_DataSetInternalString { 0x1401FCB80 };
+	WEAK symbol<void(int)> LiveStorage_WriteStats { 0x140200060 };
+	WEAK symbol<char*(int localClientNum)> LiveStorage_GetBufferData { 0x1401FD1C0 };
+
+	WEAK symbol<XAssetHeader(XAssetType type, const char* name)> DB_FindXAssetHeader { 0x140129220 };
 
 	WEAK symbol<Font_s*(const char* font)> R_RegisterFont { 0x1400F9D20 };
 	WEAK symbol<void*(const char* material, int type)> Material_RegisterHandle { 0x140019470 };
