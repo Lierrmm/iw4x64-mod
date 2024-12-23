@@ -398,6 +398,14 @@ namespace game
 		int rowCount;
 		StringTableCell* values;
 	};
+
+	struct RawFile
+	{
+		const char* name;
+		int compressedLen;
+		int len;
+		const char* buffer;
+	};
 	
 	union XAssetHeader
 	{
@@ -405,6 +413,7 @@ namespace game
 		Material* material;
 		Font_s* font;
 		StringTable* stringTable;
+		RawFile* rawFile;
 	};
 	
 	struct XAsset

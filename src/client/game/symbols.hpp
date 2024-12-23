@@ -56,6 +56,7 @@ namespace game
 	WEAK symbol<void()> Com_EndTokenizeString{0x1401ECC10 };
 	WEAK symbol<const char*(int index)> Cmd_Argv{0x140035D60 };
 	WEAK symbol<void(const char* dvarName, const char* buffer)> Dvar_SetCommand { 0x1402892A0 };
+	WEAK symbol<const char*(const char* filename, const char* extFilename, const char* codePos, bool archive)> Scr_AddSourceBuffer { 0x140222140 };
 	
 	/***************************************************************
 	 * Variables
