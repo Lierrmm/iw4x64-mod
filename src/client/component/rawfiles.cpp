@@ -27,7 +27,7 @@ namespace rawfiles
 
                     if (asset != nullptr)
                     {
-                        const auto* data = game::Scr_AddSourceBuffer(nullptr, asset->name, nullptr, false);
+                        const auto* data = game::Scr_AddSourceBuffer(nullptr, asset->name);
                         
                         std::string filename = utils::string::to_lower(asset->name);
                         utils::io::write_file(utils::string::va("raw/dump/rawfile/%s", filename.c_str()), data, false);
